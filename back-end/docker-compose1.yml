@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  nginx1:
+    container_name: nginx1
+    image: nginx:alpine
+    networks:
+      - demo_backend
+      - standbymik_network
+
+  nginx2:
+    container_name: nginx2
+    image: nginx:alpine
+    networks:
+      - demo_pantip
+
+
+networks:
+  demo_pantip:
+   external: true
+  demo_backend:
+   external: true
+  standbymik_network:
+   external: true

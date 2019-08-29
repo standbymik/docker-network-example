@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  nginx21:
+    container_name: nginx21
+    image: nginx:alpine
+    ports:
+      - 8080:80
+    networks:
+      - demo_pantip
+      - demo_backend
+    links:
+      - nginx22
+
+  nginx22:
+    container_name: nginx22
+    image: nginx:alpine
+    ports:
+      - 80:80
+    networks: 
+      - demo_pantip
+      - standbymik_network
+
+networks:
+  demo_pantip:
+   external: true
+  demo_backend:
+   external: true
+  standbymik_network:
+   external: true
